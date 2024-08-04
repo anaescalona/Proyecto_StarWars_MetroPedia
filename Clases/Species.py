@@ -1,8 +1,9 @@
 class Species:
-    def __init__(self,classification, designation, average_lifespan, hair_colors,skin_colors,eye_colors,homeworld, language, created,edited,name,url,people = []):
+    def __init__(self,classification, designation, average_lifespan, average_height, hair_colors,skin_colors,eye_colors,homeworld, language, created,edited,name,url,people = []):
         self.classification = classification
         self.designation = designation
         self.average_lifespan = average_lifespan
+        self.average_height = average_height
         self.hair_colors = hair_colors
         self.skin_colors = skin_colors
         self.eye_colors = eye_colors
