@@ -11,4 +11,17 @@ class Planets:
               self.edited = edited
               self.name = name
               self.url = url 
-        
+              self.orbital_period = orbital_period
+              self.episode_id = ''
+              self.people = []
+    
+    def mostrar_planetas(self):
+        print('')
+        print(f'------------Nombre: {self.name}------------')
+        print(f' \n-> Periodo de Orbita: {self.orbital_period} \n-> Periodo de Rotación : {self.rotation_period} \n-> Cantidad de Habitantes:  {self.population} \n-> Tipo de clima: {self.climate} \n-> Episodios en los que aparecen: {self.episode_id}')
+        print(f'---- Listado de Personajes Originarios del Planeta -----')
+        for people in self.people:
+            print(people)
+           
+
+

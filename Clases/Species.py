@@ -14,4 +14,16 @@ class Species:
         self.name = name
         self.url = url
         self.people = people
+        self.episode_id = ""
+
+    def mostrar_especie(self):
+        print('')
+        print(f'------------Nombre: {self.name}------------')
+        print(f' \n-> Altura: {self.average_height} \n-> Clasificación: {self.classification} \n-> Planeta de Origen:  {self.homeworld} \n-> Lengua Materna: {self.language} \n-> Episodios en los que aparecen: {self.episode_id}')
+        print(f'---- Listado de Seres Vivos -----')
+        for people in self.people:
+            print(people)
         
+        
+
+
