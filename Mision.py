@@ -7,4 +7,8 @@ class Mision:
         self.personas=personas
 
     def modify(self):
-        k
+        self.m_name=input()
+        self.planet=planet
+        self.spacecraft=spacecraft
+        self.weapons=weapons
+        self.personas=personas
