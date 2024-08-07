@@ -36,6 +36,7 @@ class Planets:
 
             for people in unique_items:
                 print(people)
-           
+
+
 
 

@@ -37,7 +37,7 @@ class C_Planetas:
 
         
             self.planets_list.append(Planets(diameter,rotation_period, orbital_period, gravity, population, climate, terrain, surface_water, created, edited, name, url))
-            print("PLANETA REGISTRADO EXITOSAMENTE")
+            print(f"PLANETA REGISTRADO EXITOSAMENTE")
 
         return self.planets_list
 

@@ -31,7 +31,8 @@ class Mision:
 
         print('Escoge el planeta de la mision:')
 
-        with open('planets.csv', mode='r') as file:
+        archivo = os.path.join('csv', 'planets.csv')
+        with open(archivo, mode='r') as file:
             reader = csv.DictReader(file)
             
             # Lee y muestra cada fila como un diccionario
@@ -46,7 +47,7 @@ class Mision:
             else:
                 print('Ingrese un número válido...')
 
-        with open('planets.csv', mode='r') as file:
+        with open(archivo, mode='r') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 if row['id']== option_planet:
