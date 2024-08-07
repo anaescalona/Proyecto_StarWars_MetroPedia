@@ -1,29 +1,41 @@
 import requests as rq
 from Clases.Films import Films
 
-lista_peliculas_saga = []
+class A_Peliculas:
 
-def Extraer_info():
+    def __init__(self):
+        self.lista_peliculas_saga = []
 
-    """Esta función permite extraer la informacion de la extension de la api "swapi" en films y guardar la informacion correspondiente como objeto Films
+    def Extraer_info(self):
 
-    Returns:
-        lista_peliculas_saga(list): lista con informacion sobre las peliculas de la saga
-    """
+        """Esta función permite extraer la informacion de la extension de la api "swapi" en films y guardar 
+        la informacion correspondiente como objeto Films
 
-    peliculas = rq.get('https://www.swapi.tech/api/films/')
-    peliculas = peliculas.json()
+        Returns:
+            lista_peliculas_saga(list): lista con informacion sobre las peliculas de la saga
+        """
+        try:
+            peliculas = rq.get('https://www.swapi.tech/api/films/')
+            peliculas = peliculas.json()
 
-    for i in peliculas['result']:
-        lista_peliculas_saga.append(Films(i['properties']['characters'], i['properties']['planets'], i['properties']['starships'], i['properties']['vehicles'], i['properties']['species'], i['properties']['created'], i['properties']['edited'], i['properties']['producer'], i['properties']['title'], i['properties']['episode_id'], i['properties']['director'], i['properties']['release_date'], i['properties']['opening_crawl'], i['properties']['url']))
+            for i in peliculas['result']:
+                self.lista_peliculas_saga.append(Films(i['properties']['characters'], i['properties']['planets'], i['properties']['starships'], i['properties']['vehicles'], i['properties']['species'], i['properties']['created'], i['properties']['edited'], i['properties']['producer'], i['properties']['title'], i['properties']['episode_id'], i['properties']['director'], i['properties']['release_date'], i['properties']['opening_crawl'], i['properties']['url']))
+        except:
+            print("No se pudo consultar")
+            "rq.exceptions.RequestException as e"
+        return self.lista_peliculas_saga
 
-    return lista_peliculas_saga
+
+    def mostrar_peliculas(self):
+        """Esta función permite imprimir cada una de las peliculas con su respectiva informacion en el formato deseado
+
+        """
+        for j in self.lista_peliculas_saga:
+            j.mostrar_pelicula()
 
 
-def mostrar_peliculas():
-    """Esta función permite imprimir cada una de las peliculas con su respectiva informacion en el formato deseado
-
-    """
-    for j in lista_peliculas_saga:
-        j.mostrar_pelicula()
-        
+def mainA():
+                
+    Pelicula = A_Peliculas()
+    Pelicula.Extraer_info()
+    Pelicula.mostrar_peliculas()
