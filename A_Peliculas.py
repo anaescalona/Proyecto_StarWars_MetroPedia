@@ -4,6 +4,7 @@ from Clases.Films import Films
 class A_Peliculas:
 
     def __init__(self):
+      
         self.lista_peliculas_saga = []
 
     def Extraer_info(self):
@@ -12,7 +13,7 @@ class A_Peliculas:
         la informacion correspondiente como objeto Films
 
         Returns:
-            lista_peliculas_saga(list): lista con informacion sobre las peliculas de la saga
+            self.lista_peliculas_saga(list): lista con informacion sobre las peliculas de la saga
         """
         try:
             peliculas = rq.get('https://www.swapi.tech/api/films/')
@@ -21,8 +22,9 @@ class A_Peliculas:
             for i in peliculas['result']:
                 self.lista_peliculas_saga.append(Films(i['properties']['characters'], i['properties']['planets'], i['properties']['starships'], i['properties']['vehicles'], i['properties']['species'], i['properties']['created'], i['properties']['edited'], i['properties']['producer'], i['properties']['title'], i['properties']['episode_id'], i['properties']['director'], i['properties']['release_date'], i['properties']['opening_crawl'], i['properties']['url']))
         except:
-            print("No se pudo consultar")
-            "rq.exceptions.RequestException as e"
+             
+             print("No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet")
+            
         return self.lista_peliculas_saga
 
 
@@ -35,6 +37,8 @@ class A_Peliculas:
 
 
 def mainA():
+    """Esta función permite realizar las funciones dentro de la clase A_Peliculas para obtener la informacion requerida en el inciso A 
+    """
                 
     Pelicula = A_Peliculas()
     Pelicula.Extraer_info()
