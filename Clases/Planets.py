@@ -12,16 +12,30 @@ class Planets:
               self.name = name
               self.url = url 
               self.orbital_period = orbital_period
-              self.episode_id = ''
+              self.episode_id = []
               self.people = []
     
     def mostrar_planetas(self):
         print('')
         print(f'------------Nombre: {self.name}------------')
-        print(f' \n-> Periodo de Orbita: {self.orbital_period} \n-> Periodo de Rotación : {self.rotation_period} \n-> Cantidad de Habitantes:  {self.population} \n-> Tipo de clima: {self.climate} \n-> Episodios en los que aparecen: {self.episode_id}')
+        print(f' \n-> Periodo de Orbita: {self.orbital_period} \n-> Periodo de Rotación : {self.rotation_period} \n-> Cantidad de Habitantes:  {self.population} \n-> Tipo de clima: {self.climate}')
+        print('-----Lista de Episodios en los que aparecen----')
+        for j in self.episode_id:
+             print(j)
+
         print(f'---- Listado de Personajes Originarios del Planeta -----')
-        for people in self.people:
-            print(people)
+        if(len(self.people) == 0):
+             print("No hay personajes en este planeta")
+        else:
+            unique_items = []
+            seen = set()
+            for people in self.people:
+                if people not in seen:
+                    unique_items.append(people)
+                    seen.add(people)
+
+            for people in unique_items:
+                print(people)
            
 
 
