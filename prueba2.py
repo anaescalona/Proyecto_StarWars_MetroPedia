@@ -1,4 +1,2 @@
-numeros_str = [str(num) for num in range(1, 61)]
+from Clases.Weapon import Weapon
 
-# Muestra la lista
-print(numeros_str)
