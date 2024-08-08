@@ -8,7 +8,7 @@ id,name,species,gender,height,weight,hair_color,eye_color,skin_color,year_born,h
 7,Obi-Wan Kenobi,Human,Male,1.82,81.0,White,Blue-gray,Light,57,Stewjon,0,A Jedi Master who mentored Anakin and Luke Skywalker.
 8,Emperor Palpatine,Human,Male,1.73,75.0,None,Yellow,Pale,82,Naboo,35,The Sith Lord who became Emperor of the galaxy.
 9,Anakin Skywalker,Human,Male,1.88,84.0,Blond,Blue,Light,41,Tatooine,4,A Jedi Knight who fell to the dark side and became Darth Vader.
-10,Padmé Amidala,Human,Female,1.65,45.0,Brown,Brown,Light,46,Naboo,19,The queen-turned-senator of Naboo and wife of Anakin Skywalker.
+10,Padme Amidala,Human,Female,1.65,45.0,Brown,Brown,Light,46,Naboo,19,The queen-turned-senator of Naboo and wife of Anakin Skywalker.
 11,Qui-Gon Jinn,Human,Male,1.93,89.0,Brown,Blue,Light,92,Coruscant,32,A Jedi Master who discovered Anakin Skywalker.
 12,Mace Windu,Human,Male,1.88,84.0,None,Brown,Dark,72,Haruun Kal,19,A Jedi Master and member of the Jedi High Council.
 13,Jar Jar Binks,Gungan,Male,1.96,66.0,None,Orange,Orange,52,Naboo,,A clumsy Gungan who became a representative in the Galactic Senate.
