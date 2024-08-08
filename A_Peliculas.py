@@ -43,3 +43,5 @@ def mainA():
     Pelicula = A_Peliculas()
     Pelicula.Extraer_info()
     Pelicula.mostrar_peliculas()
+
+
