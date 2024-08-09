@@ -5,13 +5,13 @@ from Clases.People import People
 
 
 class Parte_E:
-    def __init__(self, filename):
+    def __init__(self):
         """
         Inicializa la Parte_E, cargando los datos desde el archivo CSV y creando objetos People.
         
         :param filename: Ruta del archivo CSV que contiene los datos de los personajes.
         """
-        self.filename = filename
+        self.filename = 'csv/characters.csv'  
         self.people = []
         self.cargar_characters()
 
@@ -79,8 +79,8 @@ def main():
     """
     Función principal que inicia el programa para generar el gráfico de personajes por planeta.
     """
-    filename = 'csv/characters.csv'  
-    people_graph = Parte_E(filename)
+    
+    people_graph = Parte_E()
     people_graph.mostrar_grafico()
 
 if __name__ == "__main__":
