@@ -25,7 +25,7 @@ class Species:
         for i in self.episode_id:
             print(i)
 
-        print(f'---- Listado de Seres Vivos -----')
+        print(f'---- Personajes que pertenecen a la Especie -----')
         for people in self.people:
             print(people)
         

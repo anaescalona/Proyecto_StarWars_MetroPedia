@@ -20,7 +20,10 @@ class Planets:
         print(f'------------Nombre: {self.name}------------')
         print(f' \n-> Periodo de Orbita: {self.orbital_period} \n-> Periodo de Rotación : {self.rotation_period} \n-> Cantidad de Habitantes:  {self.population} \n-> Tipo de clima: {self.climate}')
         print('-----Lista de Episodios en los que aparecen----')
-        for j in self.episode_id:
+        if len(self.episode_id) == 0:
+             print('Este planeta no aparece en algún episodio de la saga')
+        else: 
+            for j in self.episode_id:
              print(j)
 
         print(f'---- Listado de Personajes Originarios del Planeta -----')
