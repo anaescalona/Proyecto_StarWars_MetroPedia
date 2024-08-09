@@ -1,9 +1,9 @@
 import os
 import csv
-from Planets import Planets 
-from Movil import Starships
-from Weapon import Weapon
-from People import People
+from Clases.Movil import Starships
+from Clases.Weapon import Weapon
+from Clases.People import People
+from Clases.Planets import Planets
 class Mision:
     def __init__(self, name, planet, starship, weapons, characters):
         self.name=name
@@ -187,7 +187,7 @@ class Mision:
     ''')
 
 
-    #ESCOGER 7 ARMAS PARA LA MISION
+    #ESCOGER HASTA 7 ARMAS PARA LA MISION
 
             salida=input("""
     |----------------------------------------------------------------------------------------------|
@@ -364,7 +364,7 @@ class Mision:
             else:
                 print('No se han registrado armas...')
             
-    #ESCOGER INTEGRANTES PARA LA MISION
+    #ESCOGER HASTA 7 INTEGRANTES PARA LA MISION
 
             salida=input("""
     |----------------------------------------------------------------------------------------------|
@@ -555,14 +555,14 @@ class Mision:
     ''')    
                 for i in integrantes_elegidos:
                     print(f'''
-            "{i}"''') 
+            "{i.name}"''') 
                 print(f'''
     |----------------------------------------------------------------------------------------------|''')
                 
             elif len(integrantes_elegidos) == 1:
                 print(f'''
     |----------------------------------------------------------------------------------------------|
-    Se ha registrado como integrante a "{integrantes_elegidos[0]}"
+    Se ha registrado como integrante a "{integrantes_elegidos[0].name}"
     |----------------------------------------------------------------------------------------------|             
     ''')    
             else:
@@ -661,40 +661,44 @@ class Mision:
 
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            nombre_misiones = [mision.name for mision in lista_misiones]
 
             #ELECCIÓN DE LA MISIÓN A MODIFICAR
 
             while True:
 
-                print(f'''
+                nombre_misiones = [mision.name for mision in lista_misiones]
+
+                while True:
+
+                    print(f'''
     |----------------------------------------------------------------------------------------------|
     Las siguientes misiones están registradas :
             ''')    
-                for i in nombre_misiones:
-                    print(f'''
+                    for i in nombre_misiones:
+                        print(f'''
         "{i}"''') 
-                print(f'''
+                    print(f'''
     |----------------------------------------------------------------------------------------------|''')
                 
-                respuesta=input(f"""
+                    respuesta=input(f"""
             Escribe el nombre de la misión que desea modificar:
             ---> """)
                 
-                for mision in lista_misiones:
+                    for mision in lista_misiones:
 
-                    #VALIDACIÓN DE RESPUESTA
+                        #VALIDACIÓN DE RESPUESTA
 
-                    if respuesta==mision.name:
-                        m_modificada=mision
+                        if respuesta==mision.name:
+                            m_modificada=mision
                         
                         
-                if respuesta in nombre_misiones:
-                    break
+                    if respuesta in nombre_misiones:
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        break
 
-                else:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print("Escribe el nombre de la misión a modificar correctamente, puede hacer uso de copiar y pegar.")
+                    else:
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        print("Escribe el nombre de la misión a modificar correctamente, puede hacer uso de copiar y pegar.")
 
                 #ELECCIÓN DEL ATRIBUTO DE MISION A MODIFICAR
 
@@ -973,15 +977,18 @@ class Mision:
 
                                     new_weapon=int(input("""\nEscriba el número de la nueva arma (puede escribir "regresar" para retroceder):
         ---> """))
+                                    if new_weapon in ['1','2','3','4','5','6','7','8','9','10']:
+                                        new_weapon=int(new_weapon)
+
+                                    elif new_weapon == 'regresar':
+                                        break
+
                                     if new_weapon > 0 and new_weapon < 11:
 
                                         new_weapon+=pagina
                                         
                                         new_weapon=str(new_weapon)
 
-                                        break
-
-                                    elif new_weapon=="regresar":
                                         break
 
                                     else:
@@ -1004,7 +1011,6 @@ class Mision:
                                 arma.mostrar_att()
                                 
                                 armas_elegidas.append(arma)
-
 
                                 if len(armas_elegidas)>=7:
                                     print('Se encuentran registradas 7 armas para la misión.')
@@ -1120,8 +1126,19 @@ class Mision:
 
                                     pagina*=10
 
-                                    new_character=int(input("""\nEscriba el número del nuevo personaje (puede escribir "regresar" para retroceder):
-        ---> """))
+                                    new_character=input("""\nEscriba el número del nuevo personaje (puede escribir "regresar" para retroceder):
+        ---> """)
+                                    if new_character in ['1','2','3','4','5','6','7','8','9','10']:
+                                        new_character=int(new_character)
+
+                                    elif new_character == 'regresar':
+                                        break
+
+                                    else:
+                                        os.system('cls' if os.name == 'nt' else 'clear')
+                                        print('Ingrese un número válido...\n')
+
+
                                     if new_character > 0 and new_character < 11:
 
                                         new_character+=pagina
@@ -1129,13 +1146,6 @@ class Mision:
                                         new_character=str(new_character)
 
                                         break
-
-                                    elif new_character=="regresar":
-                                        break
-
-                                    else:
-                                        os.system('cls' if os.name == 'nt' else 'clear')
-                                        print('Ingrese un número válido...\n')
 
                                 if new_character=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
@@ -1282,4 +1292,4 @@ def paginar_lista(lista):
 def prueba():
     Mision.cargar()
 
-menu_misiones()
+
