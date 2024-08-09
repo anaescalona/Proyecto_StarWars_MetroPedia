@@ -12,20 +12,18 @@ class B_Seres_vivos:
 
     def getSpecies(self):
 
-        """Esta funcion permite obtener la información de la api de las especies y sus caracteristicas, no obstante para ello debe ingresar al url
-        de cada especie para indagar acerca de las caracteristicas de cada una. Esto también ocurre al indagar el planeta de nacimiento.
+        """Esta funcion permite obtener la información de la api swapi en especies, sus caracteristicas, y guardarlas como objeto.
         Returns:
             self.especies_list(list): lista con información sobre cada una de las especies como objetos. 
         """
-        print('*Atención*:Debido a que el sistema debe consultar diferentes bases de datos, este proceso puede ser un poco demorado. Por favor espere...')
         try: 
             request = rq.get("https://www.swapi.tech/api/species/")
             response = request.json()
 
             MAX_ESPECIES = int(response["total_records"])
 
-            for i in range(1, MAX_ESPECIES+1):
-                self.people_list = []
+ 
+            for i in range(1, MAX_ESPECIES + 1):
                 print("*** CARGANDO ESPECIES ***")
                 url = f'https://www.swapi.tech/api/species/{i}'
                 try:
@@ -44,51 +42,70 @@ class B_Seres_vivos:
                     url = especies_response["result"]["properties"]["url"]
                     created = especies_response["result"]["properties"]["created"]
                     edited = especies_response["result"]["properties"]["edited"]
+                    homeworld = especies_response["result"]["properties"]["homeworld"]
+                    people = especies_response["result"]["properties"]["people"]
 
-                    homeworld_url = especies_response["result"]["properties"]["homeworld"]
-                    homeworld_request = rq.get(homeworld_url)
-                    homeworld_response = homeworld_request.json()
-
-                    homeworld = homeworld_response["result"]["properties"]["name"]
-
-                    for people in especies_response["result"]["properties"]["people"]:
-                        try:
-                            people_request = rq.get(people)
-                            people_response = people_request.json()
-                            self.people_list.append(people_response["result"]["properties"]["name"])
-                        except: 
-                            print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
-
-
-                    self.especies_list.append(Species(classification, designation, average_lifespan, average_height, hair_colors, skin_colors, eye_colors, homeworld, language, created, edited, name, url, self.people_list))
+                    self.especies_list.append(Species(classification, designation, average_lifespan, average_height, hair_colors, skin_colors, eye_colors, homeworld, language, created, edited, name, url, people))
 
                 except: 
-                    print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
-
-            
+                    continue
+     
         except: 
             print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
 
         return self.especies_list
-        
-    def MatchEpisodes(self):
-        """Esta función permite buscar la coincidencia entre las especies y los episodios en los que aparecen. 
-           Para ello, utiliza la informacion extraída en el inciso A. Luego de realizar este proceso, imprime la informacion en el formato deseado. 
+    
+
+    def MatchPlanetas(self, listado_planetas):
+        """Este método permite buscar la coincidencia entre las especies y su planeta de origen.
+
+        Args:
+            listado_planetas (list): lista con la información de cada uno de los planetas, obtenida en la clase C_Planetas
         """
+        for especie in self.especies_list:
+            for planeta in listado_planetas:
+                if(especie.homeworld == planeta.url):
+                    especie.homeworld = planeta.name
 
-        pelicula_saga = A_Peliculas()
-        lista_peliculas_saga = pelicula_saga.Extraer_info()
+    def MatchPeople(self, listado_personajes):
+        """Este método permite buscar la coincidencia entre los nombre de los personajes y la especie a la que pertenecen. 
 
+        Args:
+            listado_personajes (list): lista de los personajes de la saga, obtenidos en la clase D_Personajes.
+
+        Returns:
+            self.especies_list(list): lista con especies luego de haber hecho coincidir los nombres de los personajes con la especie a la que pertencen.
+        """
+        for especies in self.especies_list:
+            self.people_list = []
+            
+            for personajes in listado_personajes:
+                if(personajes.url in especies.people):
+                    self.people_list.append(personajes.name)
+
+            especies.people = self.people_list
+
+        return self.especies_list
+        
+    def MatchEpisodes(self, lista_peliculas_saga):
+        """Este método permite buscar la coincidencia entre las especies y los episodios en los que aparecen. 
+           
+
+        Args:
+            lista_peliculas_saga (list): lista de peliculas de la saga extraída en la clase A_Peliculas
+        """
         for especie in self.especies_list:
             for episode in lista_peliculas_saga:
                 if(especie.url in episode.species): 
                     especie.episode_id.append(episode.title)
-            especie.mostrar_especie()
 
-            
-    
-def mainB():
-    seres_vivos = B_Seres_vivos()
-    seres_vivos.getSpecies()
-    seres_vivos.MatchEpisodes()
+        
+
+    def show_species(self):
+        """Imprime la información acerca de las especies en el formato indicado
+        """
+        for j in self.especies_list:
+            j.mostrar_especie()
+
+
    

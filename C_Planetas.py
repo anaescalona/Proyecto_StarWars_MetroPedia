@@ -9,20 +9,19 @@ class C_Planetas:
 
     def getPlanetas(self):
         
-        """Esta función permite obtener la informacion de la extensión de la api swapi planets, con la finalidad de encontrar 
+        """Este método permite obtener la informacion de la extensión de la api swapi planets, con la finalidad de encontrar 
         dentro de ella la informacion correspondiente a cada uno y guardarlo como objetos en la lista self.planets_list.
 
         Returns:
             self.planets_list(list): Lista con información de cada planeta en la saga.
         """
-        print('* Atención * : Debido a que el sistema debe consultar diferentes bases de datos, este proceso puede ser demorado. La impresión de los planetas se hace uno a uno luego de que estos sean cargados. Por favor espere...')
         try:
             planetas = rq.get("https://www.swapi.tech/api/planets/") 
             planetas = planetas.json()
 
             MAX_planetas = int(planetas['total_records'])
 
-            for j in range(1,MAX_planetas+1):
+            for j in range(1,MAX_planetas + 1):
                 print("*** CARGANDO PLANETAS ***")
                 url = f'https://www.swapi.tech/api/planets/{j}'
 
@@ -46,7 +45,7 @@ class C_Planetas:
                     url = planetas_response['result']['properties']['url']
 
                 except:
-                    print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
+                    continue
             
                 self.planets_list.append(Planets(diameter,rotation_period, orbital_period, gravity, population, climate, terrain, surface_water, created, edited, name, url))
             
@@ -57,34 +56,33 @@ class C_Planetas:
         return self.planets_list
 
 
-    def MatchPeliculas_Planetas_Personajes(self):
-        """Esta función permite buscar la coincidencia entre los episodios (utilizando la información del inciso A ), los personajes y los planetas.
-        Esto con la finalidad de imprimir la información según el formato deseado. 
+    def MatchPeliculas_Planetas_Personajes(self, lista_peliculas_saga, lista_personajes):
+        """Este método permite buscar la coincidencia entre los episodios, los personajes y los planetas. Esto a partir de la informacion extraída 
+        en las clases A_peliculas y D_personajes
+
+        Args:
+            lista_peliculas_saga (list): lista de peliculas de la saga extraída en la clase A_Peliculas 
+            lista_personajes (list): lista de personajes de la saga extraídas de la clase D_Personajes 
+
+        Returns:
+            self.planets_list(list): lista con la información requerida de los planetas luego de haber encontrado la coincidencia con los personajes y las peliculas.
         """
-        pelicula_saga = A_Peliculas()
-        lista_peliculas_saga = pelicula_saga.Extraer_info()
         
         for i in self.planets_list:
             for j in lista_peliculas_saga:
                 if (i.url in j.planets):
-                    i.episode_id.append(j.title) # EPISODE_ID es un Array
-                    for people in j.characters:
-                        try: 
-                            people_request = rq.get(people)
-                            people_response = people_request.json()
-                            if(people_response["result"]["properties"]["homeworld"] == i.url):
-                                i.people.append(people_response["result"]["properties"]["name"])
-                        except: 
-                            print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
+                    i.episode_id.append(j.title) 
+                    for people in lista_personajes:
+                        if(people.homeworld == i.url):
+                            i.people.append(people.name)
 
-            i.mostrar_planetas()
+        return self.planets_list
 
-
-def mainC():
-    Planeta = C_Planetas()
-    Planeta.getPlanetas()
-    Planeta.MatchPeliculas_Planetas_Personajes()
-
+    def show_planetas(self):
+        """Este método permite imprimir la información en el formato indicado
+        """
+        for k in self.planets_list:
+            k.mostrar_planetas()
 
 
 
