@@ -102,7 +102,7 @@ class B_Seres_vivos:
         
 
     def show_species(self):
-        """Imprime la información acerca de las especies en el formato indicado
+        """Imprime la información acerca de las especies en el formato indicado.
         """
         for j in self.especies_list:
             j.mostrar_especie()
