@@ -220,7 +220,7 @@ class D_Personajes():
                     continue
 
         except:
-            print('No hay conexión a internet')
+            print('No se pudo consultar la informacion a la Api, por favor consulte su conexión a internet')
         
         return self.lista_starships
     
