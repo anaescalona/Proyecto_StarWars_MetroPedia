@@ -9,12 +9,14 @@ class A_Peliculas:
 
     def Extraer_info(self):
 
-        """Esta función permite extraer la informacion de la extension de la api "swapi" en films y guardar 
+        """Este método permite extraer la informacion de la extension de la api "swapi" en films y guarda
         la informacion correspondiente como objeto Films
 
         Returns:
             self.lista_peliculas_saga(list): lista con informacion sobre las peliculas de la saga
         """
+
+        print("*** CARGANDO PELICULAS ***")
         try:
             peliculas = rq.get('https://www.swapi.tech/api/films/')
             peliculas = peliculas.json()
@@ -29,19 +31,13 @@ class A_Peliculas:
 
 
     def mostrar_peliculas(self):
-        """Esta función permite imprimir cada una de las peliculas con su respectiva informacion en el formato deseado
+        """Este método permite imprimir cada una de las peliculas con su respectiva informacion en el formato deseado
 
         """
         for j in self.lista_peliculas_saga:
             j.mostrar_pelicula()
 
 
-def mainA():
-    """Esta función permite realizar las funciones dentro de la clase A_Peliculas para obtener la informacion requerida en el inciso A 
-    """
-                
-    Pelicula = A_Peliculas()
-    Pelicula.Extraer_info()
-    Pelicula.mostrar_peliculas()
+
 
 
