@@ -56,25 +56,39 @@ class C_Planetas:
         return self.planets_list
 
 
-    def MatchPeliculas_Planetas_Personajes(self, lista_peliculas_saga, lista_personajes):
+    def MatchPeliculas_Planetas(self, lista_peliculas_saga):
         """Este método permite buscar la coincidencia entre los episodios, los personajes y los planetas. Esto a partir de la informacion extraída 
-        en las clases A_peliculas y D_personajes
+        en las clases A_peliculas.
 
         Args:
             lista_peliculas_saga (list): lista de peliculas de la saga extraída en la clase A_Peliculas 
-            lista_personajes (list): lista de personajes de la saga extraídas de la clase D_Personajes 
+            
 
         Returns:
-            self.planets_list(list): lista con la información requerida de los planetas luego de haber encontrado la coincidencia con los personajes y las peliculas.
+            self.planets_list(list): lista con la información requerida de los planetas luego de haber encontrado la coincidencia con las peliculas.
         """
         
         for i in self.planets_list:
             for j in lista_peliculas_saga:
                 if (i.url in j.planets):
                     i.episode_id.append(j.title) 
-                    for people in lista_personajes:
-                        if(people.homeworld == i.url):
-                            i.people.append(people.name)
+        return self.planets_list
+    
+
+    def MatchPersonajes_Planetas(self, lista_personajes):
+        """"Este método permite buscar la coincidencia entre los episodios, los personajes y los planetas. Esto a partir de la informacion extraída 
+        en las clases D_personajes
+
+        Args:
+            lista_personajes (list): lista de personajes de la saga extraída de la clase D_Personajes.
+
+        Returns:
+            self.planets_list(list): lista con la información requerida de los planetas luego de haber encontrado la coincidencia con las peliculas.
+        """
+        for i in self.planets_list:
+            for people in lista_personajes:
+                if(people.homeworld == i.url):
+                    i.people.append(people.name)
 
         return self.planets_list
 
