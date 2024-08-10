@@ -5,6 +5,23 @@ from D_Personajes import D_Personajes
 
 def carga_api():
 
+    """Esta funcion permite realizar toda la carga de la informacion proveniente de la SWAPI a manera de objetos. 
+
+    Returns:
+        peliculas(variable): Objeto de la clase A_Peliculas
+        seres_vivos(variable) : Objeto de la clase B_Seres_vivos
+        personajes(variable): Objeto de la clase D_Personajes
+        planetas(variable):Objeto de la clase C_Planetas
+        lista_peliculas_saga(list): lista con la informacion de las peliculas de la saga.
+        lista_planetas(list) :lista con la informacion de los planetas de la saga.
+        lista_seres_vivos(list) :lista con la informacion de los seres vivos de la saga.
+        lista_personajes(list) :lista con la informacion de los personajes de la saga.
+        lista_vehiculos(list) :lista con la informacion de los vehiculos de la saga.
+        lista_starships(list) :lista con la informacion de las naves de la saga.
+
+
+    """
+
     # CARGAR LAS PELICULAS=
     peliculas = A_Peliculas()
     lista_peliculas_saga = peliculas.Extraer_info()
@@ -34,8 +51,21 @@ def carga_api():
 
 def Match_Menu_Parte1(peliculas, seres_vivos, personajes, planetas, lista_peliculas_saga, lista_seres_vivos, lista_personajes, lista_planetas):
      
+    """Esta funcion permite operar los diferentes metodos de las clases A, B, C Y D haciendo uso de las listas cargadas de la SWAPI. 
+    Una vez ejecutados los metodos muestra un menu para desplegar la informacion requerida en el inciso A,B,C,D
 
-    # OPERANDOS DE TUS FUNCIONES
+       Args:
+        peliculas(variable): Objeto de la clase A_Peliculas
+        seres_vivos(variable) : Objeto de la clase B_Seres_vivos
+        personajes(variable): Objeto de la clase D_Personajes
+        planetas(variable):Objeto de la clase C_Planetas
+        lista_peliculas_saga(list): lista con la informacion de las peliculas de la saga.
+        lista_planetas(list) :lista con la informacion de los planetas de la saga.
+        lista_seres_vivos(list) :lista con la informacion de los seres vivos de la saga.
+        lista_personajes(list) :lista con la informacion de los personajes de la saga.
+
+    """
+    # OPERANDOS DE METODOS
     
     seres_vivos.MatchPlanetas(lista_planetas)
     seres_vivos.MatchPeople(lista_personajes)
