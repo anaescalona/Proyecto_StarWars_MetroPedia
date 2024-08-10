@@ -18,11 +18,12 @@ class People:
         self.vehicles = []
 
     def mostrar_personajes(self):
-        print(f'-----Nombre del Personaje : {self.name}-----')
+        print('-----------------------------------------------')
+        print(f'->Nombre del Personaje : {self.name}')
         print(f'->Nombre del Planeta de Origen: {self.homeworld}')
-        print('-----Lista de Episodios en los que aparecen----')
+        print('---Lista de Episodios en los que aparecen---')
         for j in self.episode_id:
-             print(j)
+            print(j)
 
         print(f'->Género: {self.gender}')
 
@@ -31,20 +32,22 @@ class People:
         else:
             print(f'->Especie: {self.especie}')
             
-        print('------Lista de Naves que Utiliza-----')
+        print('---Lista de Naves que Utiliza---')
         if len(self.starships) > 0:
             for i in self.starships:
                 print(i)
-            print('\n')
+            print('')
         else: 
             print('Este personaje no utiliza ninguna nave ')
-            print('\n')
+            print('')
 
-        print('---------Lista de Vehiculos que utiliza--------')
+        print('---Lista de Vehiculos que utiliza---')
         if len(self.vehicles) > 0:
             for k in self.vehicles:
                 print(k)
-            print('\n')
+            print('')
         else: 
             print('Este personaje no utiliza ningun vehiculo ')
-            print('\n')
+            print('')
+
+        print('-----------------------------------------------')
