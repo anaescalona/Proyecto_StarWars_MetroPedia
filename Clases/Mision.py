@@ -1192,6 +1192,8 @@ class Mision:
     def cargar():
         print("Por hacer")
 
+#FUNCION A EJECUTAR PARA ABRIR MENÚ
+
 def menu_misiones():
 
     mision_creada=False
@@ -1287,9 +1289,4 @@ def paginar_lista(lista):
         else:
             print("Comando no reconocido.")
     return pagina
-
-
-def prueba():
-    Mision.cargar()
-
 
