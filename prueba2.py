@@ -11,4 +11,4 @@ mision2=Mision('2',Planets(1,1,1,1,1,1,1,1,1,1,'Marte',1),Starships(1,1,1,1,1,1,
 
 Lista_misiones=[mision1,mision2]
 
-Mision.modificar(Lista_misiones)
+menu_misiones()
