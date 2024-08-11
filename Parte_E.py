@@ -2,6 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 from collections import defaultdict
 from Clases.People import People
+import os
 
 
 class Parte_E:
@@ -11,7 +12,7 @@ class Parte_E:
         
         :param filename: Ruta del archivo CSV que contiene los datos de los personajes.
         """
-        self.filename = 'csv/characters.csv'  
+        self.filename = os.path.join('csv', 'characters.csv')  
         self.people = []
         self.cargar_characters()
 
