@@ -1,5 +1,0 @@
-1 , Tatooine , Millennium Falcon , ['Lightsaber'] , ['Qui-Gon Jinn']
-2 , Alderaan , X-wing , ['DL-44 Blaster Pistol'] , ['Leia Organa']
-3 , Naboo , TIE Fighter , ['E-11 Blaster Rifle'] , ['Darth Vader']
-4 , Stewjon , Star Destroyer , ['Bowcaster'] , ['Yoda']
-5 , Corellia , Slave 1 , ['Thermal Detonator'] , ['Han Solo']
