@@ -29,7 +29,6 @@ class App:
         ''')
 
             try:
-                os.system('cls' if os.name == 'nt' else 'clear')
                 opcion = int(input("Ingrese el número de la opción: "))
             except ValueError:
                     print("Entrada inválida. Por favor, ingrese un número.")
