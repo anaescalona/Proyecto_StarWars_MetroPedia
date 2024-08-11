@@ -1,73 +1,30 @@
-from A_Peliculas import A_Peliculas
-from B_Seres_vivos import B_Seres_vivos
-from C_Planetas import C_Planetas
-from D_Personajes import D_Personajes
+def mostrar_menu_1(peliculas, seres_vivos, planetas):
+    while True:
+        print('Bienvenido a la StarWiki')
+        print("Seleccione la opcion en la que desea ingresar:")
+        print('1) Lista de Películas de la saga')
+        print('2) Lista de las especies de seres vivos de la saga')
+        print('3) Lista de planetas')
+        print('4) Buscar personaje')
+        print('5) Volver al menu principal')
 
+        opcion = int(input('Ingrese el numero de la opcion deseada: '))
+        if opcion == 1:
+            peliculas.mostrar_peliculas()
+        elif opcion == 2:
+            seres_vivos.show_species()
+        elif opcion == 3:
+            planetas.show_planetas()
+        elif opcion == 4:
+            planetas.show_planetas()
+        elif opcion == 4:
+            print('Volviendo a menu principal...')
+            break
+        else:
+            print('Opcion Invalida')
 
-# CARGAR LAS PELICULAS
-peliculas = A_Peliculas()
-lista_peliculas_saga = peliculas.Extraer_info()
+def mostrar_menu_2(personajes):
 
-# CARGAR LOS SERES VIVOS
-seres_vivos = B_Seres_vivos()
-lista_seres_vivos = seres_vivos.getSpecies()
-
-# CARGAR LOS PERSONAJES
-personajes = D_Personajes()
-lista_personajes = personajes.GetPeople()
-
-# CARGAR LOS PLANETAS
-planetas = C_Planetas()
-
-lista_planetas = planetas.getPlanetas()
-
-# CARGAR LOS VEHICULOS
-lista_vehiculos = personajes.getVehicles()
-
-# CARGAR LOS STARSHIPS
-lista_startships = personajes.getStarships()
-
-# OPERANDOS DE LOS METODOS
-seres_vivos.MatchPlanetas(lista_planetas)
-seres_vivos.MatchPeople(lista_personajes)
-seres_vivos.MatchEpisodes(lista_peliculas_saga)
-
-planetas.MatchPeliculas_Planetas_Personajes(lista_peliculas_saga, lista_personajes)
-
-personajes.MatchPersonajes_Especies(lista_seres_vivos)
-personajes.MatchPlanetas(lista_planetas)
-personajes.MatchPeliculas_Personajes(lista_peliculas_saga)
-personajes.MatchVehicles()
-personajes.MatchStartships()
-
-
-
-
-
-print('------------ REPUBLICA BOLIVARIANA DE VENEZUELA -----------')
-print('------------ UNIVERSIDAD METROPOLITANA --------------------')
-print('-----------  FACULTAD INGENIERIA --------------------------')
-print('------------ ALGORITMOS Y PROGRAMACION --------------------')
-
-while True:
-    print('A) Lista de Películas de la saga')
-    print('B) Lista de las especies de seres vivos de la saga')
-    print('C) Lista de planetas')
-    print('D) Buscar personaje')
-    print('F) Salir del programa')
-    opcion = input('Ingrese la letra de las opciones mencionadas: ')
-    if(opcion == 'A'):
-        peliculas.mostrar_peliculas()
-    elif(opcion == 'B'):
-        seres_vivos.show_species()
-    elif(opcion == 'C'):
-        planetas.show_planetas()
-    elif(opcion == 'D'):
-        busqueda = input("Ingrese el nombre del personaje que desees buscar: ")
-        personajes.getCharactersByName(busqueda)
-    elif(opcion == 'F'):
-        print('SALIENDO DEL PROGRAMA ...')
-        break
-    else:
-        print('Opcion Invalida')
-
+                print('Bienvenido al buscador de Personajes')
+                busqueda = input("Ingrese el nombre del personaje que desees buscar: ")
+                personajes.getCharactersByName(busqueda)

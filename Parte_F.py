@@ -3,13 +3,13 @@ from Clases.Movil import Starships
 import matplotlib.pyplot as plt
 
 class Parte_F:
-    def __init__(self, filename):
+    def __init__(self):
         """
         Inicializa la clase Parte_F, cargando los datos desde el archivo CSV y crea objetos Starships.
         
         :param filename: Ruta del archivo CSV que contiene los datos de las naves estelares.
         """
-        self.filename = filename
+        self.filename = 'csv/starships.csv'
         self.starships = []
         self.crear_starships()
 
@@ -29,7 +29,7 @@ class Parte_F:
                 crew = int(columna[7]) if columna[7] else 0
                 passengers = int(columna[8]) if columna[8] else 0
                 max_atmosphering_speed = float(columna[6]) if columna[6] else 0.0
-                hyperdrive_rating = float(columna[11]) if columna[11] else 0.0
+                hiperdrive_rating = float(columna[11]) if columna[11] else 0.0
                 MGLT = float(columna[12]) if columna[12] else 0.0
                 cargo_capacity = float(columna[9]) if columna[9] else 0.0
                 consumables = columna[10] if columna[10] else '' 
@@ -37,7 +37,7 @@ class Parte_F:
                 starship_class = columna[13]
                 pilots = [pilot.strip() for pilot in columna[14].split(',')] if columna[14] else []
                 
-                starship = Starships(model, manufacturer, cost_in_credits, length, crew, passengers, max_atmosphering_speed, hyperdrive_rating, MGLT, cargo_capacity, consumables, name, starship_class, pilots)
+                starship = Starships(model, manufacturer, cost_in_credits, length, crew, passengers, max_atmosphering_speed, hiperdrive_rating, MGLT, cargo_capacity, consumables, name, starship_class, pilots)
                 self.starships.append(starship) 
 
     def get_starships(self):
@@ -63,7 +63,7 @@ class Parte_F:
         elif titulo == "Capacidad de carga":
             values = [starship.cargo_capacity for starship in naves_seleccionadas]
         elif titulo == "Clasificación de hiperimpulsor":
-            values = [starship.hyperdrive_rating for starship in naves_seleccionadas]
+            values = [starship.hiperdrive_rating for starship in naves_seleccionadas]
         elif titulo == "MGLT (Modern Galactic Light Time)":
             values = [starship.MGLT for starship in naves_seleccionadas]
 
@@ -73,9 +73,6 @@ class Parte_F:
         plt.ylabel(titulo)
         plt.title(titulo)
         plt.xticks(rotation=90)
-        for bar in bars:
-            yval = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2,yval+1000,f'{yval:.2f}',ha='center',va='bottom',rotation=90)
         plt.tight_layout()
         plt.show()
 
@@ -84,19 +81,24 @@ class Parte_F:
         """
         Función principal que maneja el menú y las opciones del usuario para crear gráficos comparativos.
         """
-        print('\n------------------------------------------------------------')
-        print("Bienvenido al Comparador de naves de StarWars MetroPedia")
-        print("A continuación podrá elegir sus características a comparar:")
+        print(
+'''
+    --------------------------------------------------
+                STAR WARS METROPEDIA              
+    --------------------------------------------------
+    ¡Bienvenido al Comparador de naves de StarWars MetroPedia!
+    A continuación podrá elegir sus características a comparar:''')
 
         while True:
-            print()
-            print("Seleccione una opción para crear un gráfico comparativo:")
-            print("1. Longitud de la nave")
-            print("2. Capacidad de carga")
-            print("3. Clasificación de hiperimpulsor")
-            print("4. MGLT (Modern Galactic Light Time)")
-            print("5. Salir al menú pricipal")
-            print('------------------------------------------------------------')
+            print('''
+    Seleccione una opción para crear un gráfico comparativo:"
+    1. Longitud de la nave.")
+    2. Capacidad de carga.")
+    3. Clasificación de hiperimpulsor.")
+    4. MGLT (Modern Galactic Light Time).")
+    5. Volver al menú pricipal.")
+    --------------------------------------------------
+    ''')
             try:
                 opcion = int(input("Ingrese el número de la opción: "))
             except ValueError:
@@ -124,7 +126,7 @@ class Parte_F:
                     naves_seleccionadas.append(starship)
                 elif titulo == "Capacidad de carga" and starship.cargo_capacity != 0:
                     naves_seleccionadas.append(starship)
-                elif titulo == "Clasificación de hiperimpulsor" and starship.hyperdrive_rating != 0:
+                elif titulo == "Clasificación de hiperimpulsor" and starship.hiperdrive_rating != 0:
                     naves_seleccionadas.append(starship)
                 elif titulo == "MGLT (Modern Galactic Light Time)" and starship.MGLT != 0:
                     naves_seleccionadas.append(starship)
@@ -160,15 +162,3 @@ class Parte_F:
             
             self.mostrar_grafico(titulo, seleccionadas)
 
-            
-
-def main():
-    """
-    Función principal que inicia el programa.
-    """
-    filename = 'csv/starships.csv'
-    parte_f = Parte_F(filename)
-    parte_f.menu()
-
-if __name__ == "__main__":
-    main()

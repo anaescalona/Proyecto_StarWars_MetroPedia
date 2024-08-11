@@ -24,7 +24,6 @@ class Parte_E:
             lector = csv.reader(csvfile)
             next(lector)  
             for columna in lector:
-                id = columna[0]
                 name = columna[1]
                 species = columna[2]  
                 gender = columna[3]
@@ -38,7 +37,7 @@ class Parte_E:
                 year_died = columna[11]  
                 description = columna[12]  
                 
-                person = People(height, mass, hair_color, skin_color, eye_color, birth_year, gender, created='', edited='', name=name, homeworld=homeworld, id=id, url='')
+                person = People(height, mass, hair_color, skin_color, eye_color, birth_year, gender, created='', edited='', name=name, homeworld=homeworld, url='')
                 self.people.append(person)
 
     def contar_personaje_por_planeta(self):
@@ -75,13 +74,6 @@ class Parte_E:
         plt.tight_layout()  
         plt.show()
 
-def main():
-    """
-    Función principal que inicia el programa para generar el gráfico de personajes por planeta.
-    """
-    
-    people_graph = Parte_E()
-    people_graph.mostrar_grafico()
 
-if __name__ == "__main__":
-    main()
+
+    

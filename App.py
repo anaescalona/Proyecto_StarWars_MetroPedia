@@ -6,7 +6,7 @@ from prueba_menu import mostrar_menu_1
 from prueba_menu import mostrar_menu_2
 from Parte_E import Parte_E
 from Parte_F import Parte_F
-from Mision import Mision, menu_misiones
+from Clases.Mision import Mision, menu_misiones
 
 class App:
 
