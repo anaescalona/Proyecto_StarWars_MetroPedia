@@ -1530,6 +1530,7 @@ def menu_misiones():
     mision_creada=False
 
     while True:
+        
 
         #ELECCION DEL MENU A EJECUTAR.
 
@@ -1545,7 +1546,11 @@ def menu_misiones():
             4 - Cargar misiones.
             5 - Salir.
                   
-(Si ya ha creado misiones y selecciona "Crear misiones" estará eliminando las misiones construidas anteriormente.)
+(Si ya ha creado misiones y selecciona "Crear misiones" estará eliminando las misiones construidas
+ anteriormente.)
+                  
+Nota: Al salir, las misiones registradas serán eliminadas, así que es recomendable guardar misiones
+antes.
                                 ''')
                 
             response=input("""Escribe el número de la opción que quiere ejecutar:
