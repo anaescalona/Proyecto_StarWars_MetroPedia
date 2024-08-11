@@ -8,8 +8,6 @@ class Parte_G:
     def __init__(self):
         """
         Inicializa Parte_G con los datos de las naves estelares desde un archivo CSV.
-
-        :param filename: Ruta del archivo CSV que contiene los datos de las naves estelares.
         """
         self.filename = 'csv/starships.csv'
         self.starships = []
@@ -17,11 +15,11 @@ class Parte_G:
 
     def cargar_naves(self):
         """
-        Carga los datos del archivo CSV y crea objetos Starships para cada fila de datos del csv.
+        Carga los datos del archivo CSV y crea objetos Starships para cada fila de datos del CSV.
         """
         with open(self.filename, 'r') as csvfile:
             lector = csv.reader(csvfile)
-            next(lector) 
+            next(lector)  # Salta el encabezado
             for columna in lector:
                 model = columna[2]
                 manufacturer = columna[3]
@@ -30,7 +28,7 @@ class Parte_G:
                 crew = int(columna[7]) if columna[7] else 0
                 passengers = int(columna[8]) if columna[8] else 0
                 max_atmosphering_speed = float(columna[6]) if columna[6] else 0.0
-                hyperdrive_rating = float(columna[11]) if columna[11] else 0.0
+                hiperdrive_rating = float(columna[11]) if columna[11] else 0.0
                 MGLT = float(columna[12]) if columna[12] else 0.0
                 cargo_capacity = float(columna[9]) if columna[9] else 0.0
                 consumables = columna[10] if columna[10] else ''
@@ -38,43 +36,44 @@ class Parte_G:
                 starship_class = columna[13]
                 pilots = [pilot.strip() for pilot in columna[14].split(',')] if columna[14] else []
 
-                starship = Starships(model, manufacturer, cost_in_credits, length, crew, passengers, max_atmosphering_speed, hyperdrive_rating, MGLT, cargo_capacity, consumables, name, starship_class, pilots)
+                starship = Starships(model, manufacturer, cost_in_credits, length, crew, passengers, max_atmosphering_speed, hiperdrive_rating, MGLT, cargo_capacity, consumables, name, '', starship_class, pilots)
                 self.starships.append(starship)
 
     def obtener_estadisticas_por_clase(self):
         """
         Calcula estadísticas básicas para las naves agrupadas por clase.
-
-        :return: Un diccionario con la clase de nave como clave y estadísticas como valores.
         """
         data_by_class = {}
 
         for ship in self.starships:
-            if ship.starships_class not in data_by_class:
-                data_by_class[ship.starships_class] = {
+            starship_class = ship.starships_class
+            # Asegúrate de que starship_class sea una cadena
+            if not isinstance(starship_class, str):
+                print(f"Advertencia: starship_class no es una cadena. Valor: {starship_class}")
+                continue
+
+            if starship_class not in data_by_class:
+                data_by_class[starship_class] = {
                     'Clasif Hiperimpulsor': [],
                     'MGLT': [],
                     'Veloc Máx en Atmósfera': [],
                     'Costo (en créditos)': []
                 }
             
-            if ship.hyperdrive_rating > 0:
-                data_by_class[ship.starships_class]['Clasif Hiperimpulsor'].append(ship.hyperdrive_rating)
+            if ship.hiperdrive_rating > 0:
+                data_by_class[starship_class]['Clasif Hiperimpulsor'].append(ship.hiperdrive_rating)
             if ship.MGLT > 0:
-                data_by_class[ship.starships_class]['MGLT'].append(ship.MGLT)
+                data_by_class[starship_class]['MGLT'].append(ship.MGLT)
             if ship.max_atmosphering_speed > 0:
-                data_by_class[ship.starships_class]['Veloc Máx en Atmósfera'].append(ship.max_atmosphering_speed)
+                data_by_class[starship_class]['Veloc Máx en Atmósfera'].append(ship.max_atmosphering_speed)
             if ship.cost_in_credits > 0:
-                data_by_class[ship.starships_class]['Costo (en créditos)'].append(ship.cost_in_credits)
+                data_by_class[starship_class]['Costo (en créditos)'].append(ship.cost_in_credits)
 
         return data_by_class
 
     def calcular_estadisticas(self, values):
         """
         Calcula estadísticas básicas de una lista de valores.
-
-        :param values: Lista de valores numéricos.
-        :return: Un diccionario con el promedio, moda, máximo y mínimo.
         """
         if not values:
             return {
@@ -148,19 +147,29 @@ class Parte_G:
         """
         Función principal que maneja el menú para la selección de estadísticas.
         """
-        print("\nComparador Estadistico de Naves Espaciales")
         while True:
-            print("Seleccione una categoría de datos:")
-            print("1. Clasificación de Hiperimpulsor")
-            print("2. MGLT")
-            print("3. Velocidad Máxima en Atmósfera")
-            print("4. Costo en Créditos")
-            print("5. Volver a Menu Pricipal")
+            print('''
+        |-----------------------------------------------------------|
+          Bienvenido al Comparador Estadístico de Naves Espaciales
+        |-----------------------------------------------------------|
+        A continuación podrá seleccionar la categoría de datos para 
+        visualizar estadísticas:
 
-            opcion_categoria = int(input("Ingrese una opción: "))
+        1) Clasificación de Hiperimpulsor
+        2) MGLT
+        3) Velocidad Máxima en Atmósfera
+        4) Costo en Créditos
+        5) Volver al anterior menu
+        |-----------------------------------------------------------|
+    ''')
+            try:
+                opcion_categoria = int(input("Ingrese una opción: "))
+            except ValueError:
+                print("Entrada inválida. Por favor, ingrese un número.")
+                continue
 
             if opcion_categoria == 5:
-                print("\nVolviendo al menu principal...\n")
+                print("\nVolviendo al menu de Estadisticas Starwars\n")
                 break
 
             categoria = ''

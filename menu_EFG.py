@@ -11,14 +11,14 @@ def menu_fgh():
     while True: 
         print('''
         |--------------------------------------------------|
-            Bienvenido a Estadísticas StarWars              
+               ¡Bienvenido a Estadísticas StarWars!              
         |--------------------------------------------------|
         Aquí podrás ver una serie de estadísticas diferentes
 
-        1) Gráfico de Cantidad de personajes nacidos en cada planeta
-        2) Gráficos comparativos de naves espaciales
-        3) Estadísticas sobre naves
-        4) Volver al Menú principal
+        1) Gráfico de Cantidad de personajes nacidos en cada planeta.
+        2) Gráficos comparativos de naves espaciales.
+        3) Estadísticas sobre naves espaciales.
+        4) Volver al Menú principal.
         |--------------------------------------------------|
         ''')
 

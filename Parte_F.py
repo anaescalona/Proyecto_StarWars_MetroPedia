@@ -81,23 +81,22 @@ class Parte_F:
         """
         Función principal que maneja el menú y las opciones del usuario para crear gráficos comparativos.
         """
-        print(
-'''
-    |----------------------------------------------------------------|
-        ¡Bienvenido al Comparador de naves de StarWars MetroPedia!             
-    |----------------------------------------------------------------|
-    A continuación podrá elegir sus características a comparar:''')
+
+    
 
         while True:
             print('''
+    |----------------------------------------------------------------|
+    ¡Bienvenido al Comparador Gráfico de naves de StarWars MetroPedia!             
+    |----------------------------------------------------------------|
+    A continuación podrá elegir sus características a comparar:
     Seleccione una opción para crear un gráfico comparativo:
     1. Longitud de la nave.
     2. Capacidad de carga.
     3. Clasificación de hiperimpulsor.
     4. MGLT (Modern Galactic Light Time).
-    5. Volver al menú pricipal.
-    |----------------------------------------------------------------|
-    ''')
+    5. Volver al menu de Estadisticas StarWars.
+    |----------------------------------------------------------------|''')
             try:
                 opcion = int(input("Ingrese el número de la opción: "))
             except ValueError:
@@ -113,7 +112,7 @@ class Parte_F:
             elif opcion == 4:
                 titulo = "MGLT (Modern Galactic Light Time)"
             elif opcion == 5:
-                print("Volver al menú principal")
+                print("Volviendo al menu de Estadisticas StarWars")
                 break
             else:
                 print("Opción inválida")
