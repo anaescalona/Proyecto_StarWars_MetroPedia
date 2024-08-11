@@ -110,7 +110,7 @@ class Mision:
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
             if salida.lower() == "salir":
-
+                os.system('cls' if os.name == 'nt' else 'clear')
                 break
             
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -173,7 +173,7 @@ class Mision:
 
             #SALIDA AL MENU PRINCIPAL DE MISIONES   
             if salida.lower() == "salir":
-
+                os.system('cls' if os.name == 'nt' else 'clear')
                 break
 
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -208,7 +208,7 @@ class Mision:
                     print('Ingrese un número válido...\n')
 
                 #CONVERSION DE RESPUESTA AL ID DE NAVE
-                if option_starship > 0 and option_starship < 11:
+                if isinstance(option_starship,int) and option_starship > 0 and option_starship < 11:
 
                     option_starship+=pagina
                     
@@ -249,7 +249,7 @@ class Mision:
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
             if salida.lower() == "salir":
-
+                os.system('cls' if os.name == 'nt' else 'clear')
                 break
 
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -290,13 +290,13 @@ class Mision:
                         print('Ingrese un número válido...\n')
 
                     #TRANSFORMA RESPUESTA EN ID DE ARMA
-                    if option_weapon > 0 and option_weapon < 11:
+                    if isinstance(option_weapon,int) and option_weapon > 0 and option_weapon < 11:
 
-                        option_weapon+=pagina
-                        
-                        option_weapon=str(option_weapon)
+                            option_weapon+=pagina
+                            
+                            option_weapon=str(option_weapon)
 
-                        break
+                            break
                 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -495,7 +495,7 @@ class Mision:
                         print('Ingrese un número válido...\n')
 
                     #CONVIERTE LA RESPUESTA EN ID DE PERSONAJE
-                    if option_character > 0 and option_character < 11:
+                    if isinstance(option_character,int) and option_character > 0 and option_character < 11:
 
                         option_character+=pagina
                         
@@ -965,7 +965,7 @@ class Mision:
                             print('Ingrese un número válido...\n')
 
                         #CONVERSION DE RESPUESTA AL ID DE NAVE
-                        if option_starship > 0 and option_starship < 11:
+                        if isinstance(option_starship,int) and option_starship > 0 and option_starship < 11:
 
                             option_starship+=pagina
                             
@@ -1105,7 +1105,7 @@ class Mision:
                                     elif new_weapon.lower() == 'regresar':
                                         break
 
-                                    if new_weapon > 0 and new_weapon < 11:
+                                    if isinstance(new_weapon,int) and new_weapon > 0 and new_weapon < 11:
 
                                         new_weapon+=pagina
                                         
@@ -1263,7 +1263,7 @@ class Mision:
                                         print('Ingrese un número válido...\n')
 
 
-                                    if new_character > 0 and new_character < 11:
+                                    if isinstance(new_character,int) and new_character > 0 and new_character < 11:
 
                                         new_character+=pagina
                                         
