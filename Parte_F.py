@@ -83,21 +83,20 @@ class Parte_F:
         """
         print(
 '''
-    --------------------------------------------------
-                STAR WARS METROPEDIA              
-    --------------------------------------------------
-    ¡Bienvenido al Comparador de naves de StarWars MetroPedia!
+    |----------------------------------------------------------------|
+        ¡Bienvenido al Comparador de naves de StarWars MetroPedia!             
+    |----------------------------------------------------------------|
     A continuación podrá elegir sus características a comparar:''')
 
         while True:
             print('''
-    Seleccione una opción para crear un gráfico comparativo:"
-    1. Longitud de la nave.")
-    2. Capacidad de carga.")
-    3. Clasificación de hiperimpulsor.")
-    4. MGLT (Modern Galactic Light Time).")
-    5. Volver al menú pricipal.")
-    --------------------------------------------------
+    Seleccione una opción para crear un gráfico comparativo:
+    1. Longitud de la nave.
+    2. Capacidad de carga.
+    3. Clasificación de hiperimpulsor.
+    4. MGLT (Modern Galactic Light Time).
+    5. Volver al menú pricipal.
+    |----------------------------------------------------------------|
     ''')
             try:
                 opcion = int(input("Ingrese el número de la opción: "))
