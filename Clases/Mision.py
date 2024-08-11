@@ -7,7 +7,7 @@ from Clases.People import People
 from Clases.Planets import Planets
 class Mision:
 
-    #FUNCION CONSTRUCTOR DE OBJETO
+    #FUNCION CONSTRUCTOR DE OBJETO MISION
 
     def __init__(self, name, planet, starship, weapons, characters):
         self.name=name
@@ -21,6 +21,8 @@ class Mision:
     def construir(lista_misiones):
 
         os.system('cls' if os.name == 'nt' else 'clear')
+
+
 
         print('¡Bienvenido al menú para creación de misiones!\n')
 
@@ -49,7 +51,7 @@ class Mision:
                 
                 break
 
-    #ESCOGER NOMBRE DE MISION
+    #ESCOGER NOMBRE PARA MISION
             
             salida=input("""
     |----------------------------------------------------------------------------------------------|
@@ -62,7 +64,8 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            #SALIDA AL MENU PRINCIPAL DE MISIONES
+            if salida.lower() == "salir":
                 os.system('cls' if os.name == 'nt' else 'clear')
                 break
 
@@ -73,7 +76,8 @@ class Mision:
                 m_name=input("""\nEscribe el nombre para la misión:
     ---> """)
                 
-                #VALIDACION DEL QUE NOMBRE SEA PERMITIDO
+                #VALIDACION PARA QUE EL NOMBRE SEA CADENA ALFANUMERICA
+
                 patron = r'^[a-zA-Z0-9 ]+$'
                 if re.match(patron, m_name) and m_name != ' ' and m_name != '  ' and m_name != '   ' and len(m_name)>0:
                     break
@@ -104,7 +108,8 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            #SALIDA AL MENU PRINCIPAL DE MISIONES
+            if salida.lower() == "salir":
 
                 break
             
@@ -114,16 +119,18 @@ class Mision:
 
             while True:
                 
-
+                #LECTURA DEL ARCHIVO CSV. DE PLANETAS
                 with open(archivo, mode='r') as file:
                     reader = csv.DictReader(file)
 
-                    # Lee y muestra cada fila como un diccionario, presenta la lista de opciones enumeradas.
+                    # PRESENTA LA LISTA DE NOMBRES DE PLANETAS EN UNA PAGINA ENUMERADA
+                    #(la enumeracion coincide con el id del planeta)
                     for indice,row in enumerate(reader):
                         print(f'{indice+1} - {row['name']}')
 
                 option_planet=input("""\nEscriba el numero del Planeta de destino:
     ---> """)
+                #VALIDACION DE LA RESPUESTA
                 if option_planet in ['1','2','3','4','5','6','7','8','9',"10",'11','12','13']:
                     break
                 
@@ -133,6 +140,7 @@ class Mision:
 
             os.system('cls' if os.name == 'nt' else 'clear')
 
+            #CONVERSION DE LA RESPUESTA EN OBJETO PLANETA
             with open(archivo, mode='r') as file:
                 reader = csv.DictReader(file)
 
@@ -162,8 +170,9 @@ class Mision:
     (Al salir del menú de creación de misiones no se guardará la información registrada de esta misión)
     
     ---> """)
-            
-            if salida == "salir":
+
+            #SALIDA AL MENU PRINCIPAL DE MISIONES   
+            if salida.lower() == "salir":
 
                 break
 
@@ -172,6 +181,8 @@ class Mision:
             print(f'\nEscoge, de la lista, la nave que utilizará en la misión:\n')
 
             while True:
+
+                #LECTURA DE ARCHIVO CSV. DE NAVES Y FORMACION DE LISTA NAVES
                 archivo = os.path.join('csv', 'starships.csv')
                 with open(archivo, mode='r') as file:
                     reader = csv.DictReader(file)
@@ -180,13 +191,23 @@ class Mision:
                     for row in reader:
                         lista_naves.append(row['name'])
 
+                #PRESENTA LISTA NAVES EN PAGINAS
                 pagina=paginar_lista(lista_naves)
 
                 pagina*=10
 
-                option_starship=int(input("""\nEscriba el número de la nave a utilizar:
-    ---> """))
+                option_starship=input("""\nEscriba el número de la nave a utilizar:
+    ---> """)
+                
+                #VALIDACION DE RESPUESTA
+                if option_starship in ['1','2','3','4','5','6','7','8','9','10']:
+                    option_starship=int(option_starship)
 
+                else:
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    print('Ingrese un número válido...\n')
+
+                #CONVERSION DE RESPUESTA AL ID DE NAVE
                 if option_starship > 0 and option_starship < 11:
 
                     option_starship+=pagina
@@ -195,19 +216,15 @@ class Mision:
 
                     break
 
-                else:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print('Ingrese un número válido...\n')
-            
             os.system('cls' if os.name == 'nt' else 'clear')
 
+            #CONVERSION DE LA RESPUESTA EN OBJETO NAVE
             with open(archivo, mode='r') as file:
                 reader = csv.DictReader(file)
 
                 for row in reader:
                     if row['id']== option_starship:
-                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
-
+                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
             print(f'''
     |----------------------------------------------------------------------------------------------|
@@ -230,7 +247,8 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            #SALIDA AL MENU PRINCIPAL DE MISIONES
+            if salida.lower() == "salir":
 
                 break
 
@@ -244,6 +262,8 @@ class Mision:
             while True:
 
                 while True:
+
+                    #LECTURA DEL ARCHIVO CSV. DE ARMAS Y FORMA LA LISTA DE ARMAS
                     archivo = os.path.join('csv', 'weapons.csv')
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -252,12 +272,16 @@ class Mision:
                         for row in reader:
                             lista_armas.append(row['name'])
 
+
+                    #ORGANIZA LISTA DE ARMAS EN PAGINAS
                     pagina=paginar_lista(lista_armas)
 
                     pagina*=10
 
                     option_weapon=input("""\nEscriba el número del arma a utilizar:
     ---> """)
+                    
+                    #VALIDA LA RESPUESTA
                     if option_weapon in ['1','2','3','4','5','6','7','8','9','10']:
                         option_weapon=int(option_weapon)
 
@@ -265,6 +289,7 @@ class Mision:
                         os.system('cls' if os.name == 'nt' else 'clear')
                         print('Ingrese un número válido...\n')
 
+                    #TRANSFORMA RESPUESTA EN ID DE ARMA
                     if option_weapon > 0 and option_weapon < 11:
 
                         option_weapon+=pagina
@@ -275,6 +300,7 @@ class Mision:
                 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
+                #CREA Y REGISTRA EL PRIMER OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 0:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -287,6 +313,7 @@ class Mision:
                     
                     armas_elegidas.append(arma1)
 
+                #CREA Y REGISTRA EL SEGUNDO OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 1:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -299,6 +326,7 @@ class Mision:
                     
                     armas_elegidas.append(arma2)
 
+                #CREA Y REGISTRA EL TERCER OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 2:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -311,6 +339,7 @@ class Mision:
                     
                     armas_elegidas.append(arma3)
 
+                #CREA Y REGISTRA EL CUARTO OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 3:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -323,6 +352,7 @@ class Mision:
                     
                     armas_elegidas.append(arma4)
 
+                #CREA Y REGISTRA EL QUINTO OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 4:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -335,6 +365,7 @@ class Mision:
                     
                     armas_elegidas.append(arma5)
 
+                #CREA Y REGISTRA EL SEXTO OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 5:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -347,6 +378,7 @@ class Mision:
                     
                     armas_elegidas.append(arma6)
 
+                #CREA Y REGISTRA EL SEPTIMO OBJETO DE ARMA EN LISTA DE ARMAS ELEGIDAS
                 if contador == 6:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -363,6 +395,7 @@ class Mision:
                 
                 contador+=1
 
+                #AVANZA A ELEGIR INTEGRANTES
                 response=input(f'''
     Si desea avanzar pulse enter, si desea elegir otra arma escribe "1".
     
@@ -420,7 +453,8 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            #SALIDA AL MENU PRINCIPAL DE MISIONES
+            if salida.lower() == "salir":
 
                 break
 
@@ -434,6 +468,8 @@ class Mision:
             while True:
 
                 while True:
+
+                    #LEE ARCHIVO CSV. DE PERSONAJES Y CREA LISTA DE PERSONAJES
                     archivo = os.path.join('csv', 'characters.csv')
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
@@ -442,12 +478,15 @@ class Mision:
                         for row in reader:
                             lista_personajes.append(row['name'])
 
+                    #ORGANIZA LISTA DE PERSONAJES EN PAGINAS
                     pagina=paginar_lista(lista_personajes)
 
                     pagina*=10
 
                     option_character=int(input("""\nEscribe el número del personaje a seleccionar:
     ---> """))
+                    
+                    #VALIDA LA RESPUESTA
                     if option_character in ['1','2','3','4','5','6','7','8','9','10']:
                         option_character=int(option_character)
 
@@ -455,6 +494,7 @@ class Mision:
                         os.system('cls' if os.name == 'nt' else 'clear')
                         print('Ingrese un número válido...\n')
 
+                    #CONVIERTE LA RESPUESTA EN ID DE PERSONAJE
                     if option_character > 0 and option_character < 11:
 
                         option_character+=pagina
@@ -468,14 +508,14 @@ class Mision:
                 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
+                #REGISTRA AL PRIMER PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 0:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona1)
 
                     print(f'''
@@ -484,14 +524,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL SEGUNDO PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 1:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona2=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona2=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona2)
 
                     print(f'''
@@ -500,14 +540,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL TERCER PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 2:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona3=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona3=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona3)
 
                     print(f'''
@@ -516,14 +556,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL CUARTO PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 3:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona4=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona4=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona4)
 
                     print(f'''
@@ -532,14 +572,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL QUINTO PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 4:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona5=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona5=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona5)
 
                     print(f'''
@@ -548,14 +588,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL SEXTO PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 5:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona6=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona6=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona6)
 
                     print(f'''
@@ -564,14 +604,14 @@ class Mision:
     |----------------------------------------------------------------------------------------------|
                         ''')
 
+                #REGISTRA AL SEPTIMO PERSONAJE EN LISTA DE INTEGRANTES ELEGIDOS
                 if contador == 6:
                     with open(archivo, mode='r') as file:
                         reader = csv.DictReader(file)
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona7=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona7=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona7)
 
                     print(f'''
@@ -583,6 +623,8 @@ class Mision:
                     break
 
                 contador+=1
+
+                #AVANZA AL FINAL DE CREACION DE MISIONES
                 response=input(f'''
     Si desea avanzar pulse enter, si desea elegir otro integrante escribe "1".
     
@@ -627,9 +669,13 @@ class Mision:
 
             mision=Mision(m_name,planeta,nave,armas_elegidas,integrantes_elegidos)
 
+            #SE REGISTRA EN LISTA DE MISIONES
+
             lista_misiones.append(mision)
 
             contador_misiones+=1
+
+            #LIMITA LA CANTIDAD DE MISIONES A 5
 
             if contador_misiones == 5:
 
@@ -667,7 +713,7 @@ class Mision:
 
     ---> """)
             
-            if respuesta == "salir":
+            if respuesta.lower() == "salir":
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -716,7 +762,7 @@ class Mision:
         
         ---> """)
                 
-                if salida == "salir":
+                if salida.lower() == "salir":
                     os.system('cls' if os.name == 'nt' else 'clear')
                     break
 
@@ -870,7 +916,7 @@ class Mision:
 
                             break
 
-                        elif new_planet =="regresar":
+                        elif new_planet.lower() =="regresar":
                             break
 
                         else:
@@ -903,9 +949,22 @@ class Mision:
 
                         pagina*=10
 
-                        option_starship=int(input("""\nEscriba el número de la nueva nave (puede escribir "regresar" para retroceder):
-        ---> """))
+                        option_starship=input("""\nEscriba el número de la nueva nave (puede escribir "regresar" para retroceder):
+        ---> """)
 
+                        #VALIDACION DE RESPUESTA
+                        if option_starship in ['1','2','3','4','5','6','7','8','9','10']:
+                            option_starship=int(option_starship)
+
+                        elif option_starship.lower() == "regresar":
+
+                            break
+
+                        else:
+                            os.system('cls' if os.name == 'nt' else 'clear')
+                            print('Ingrese un número válido...\n')
+
+                        #CONVERSION DE RESPUESTA AL ID DE NAVE
                         if option_starship > 0 and option_starship < 11:
 
                             option_starship+=pagina
@@ -919,7 +978,7 @@ class Mision:
 
                                 for row in reader:
                                     if row['id']== option_starship:
-                                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
+                                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
                             m_modificada.starship=nave
 
@@ -931,13 +990,6 @@ class Mision:
                 ''')
                             break
 
-                        elif option_starship == "regresar":
-
-                            break
-
-                        else:
-                            os.system('cls' if os.name == 'nt' else 'clear')
-                            print('Ingrese un número válido...\n')
                     
                 #MODIFICAR ARMAS A MISION
 
@@ -1004,7 +1056,7 @@ class Mision:
                 ''')
                                     break
 
-                                elif arma_eliminar=="regresar":
+                                elif arma_eliminar.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1050,7 +1102,7 @@ class Mision:
                                     if new_weapon in ['1','2','3','4','5','6','7','8','9','10']:
                                         new_weapon=int(new_weapon)
 
-                                    elif new_weapon == 'regresar':
+                                    elif new_weapon.lower() == 'regresar':
                                         break
 
                                     if new_weapon > 0 and new_weapon < 11:
@@ -1065,7 +1117,7 @@ class Mision:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print('Ingrese un número válido...\n')
 
-                                if new_weapon=="regresar":
+                                if new_weapon.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1157,7 +1209,7 @@ class Mision:
                 ''')
                                     break
 
-                                elif integrante_eliminar=="regresar":
+                                elif integrante_eliminar.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1219,7 +1271,7 @@ class Mision:
 
                                         break
 
-                                if new_character=="regresar":
+                                if new_character.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1230,7 +1282,7 @@ class Mision:
 
                                     for row in reader:
                                         if row['id']== new_character:
-                                            persona=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
+                                            persona=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
 
                                 integrantes_elegidos.append(persona)
 
@@ -1272,6 +1324,8 @@ class Mision:
 
         return lista_misiones
 
+    #FUNCION PARA CONVERTIR LISTA DE OBJETOS MISION EN CADENA DE TEXTO
+
     def __str__(self):
 
         lista_armas=[]
@@ -1283,6 +1337,8 @@ class Mision:
 
         return f"{self.name} , {self.planet.name} , {self.starship.name} , {lista_armas} , {lista_personajes}"
     
+    #FUNCION PARA GUARDAR LA LISTA DE MISIONES EN ARCHIVO TXT
+
     def guardar(lista_misiones):
 
         while True:
@@ -1305,7 +1361,7 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -1342,6 +1398,8 @@ class Mision:
     |--------------------------------------------------------------------------------------------------|             
     ''')
             break
+
+    #FUNCION PARA CONVERTIR EL ARCHIVO TXT A OBJETO MISION
 
     def convertir_txt(texto):
 
@@ -1381,7 +1439,7 @@ class Mision:
 
                 for row in reader:
                     if row['name'] == str(starship):
-                        starship=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
+                        starship=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
 
         #SE CONVIERTE LA LISTA DE NOMBRES DE ARMAS A LISTA DE OBJETOS ARMAS
@@ -1407,7 +1465,7 @@ class Mision:
 
                 for row in reader:
                     if row['name']== personaje:
-                        personaje1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
+                        personaje1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                         integrantes_elegidos.append(personaje1)
 
         characters=integrantes_elegidos
@@ -1415,6 +1473,8 @@ class Mision:
         mision=Mision(name, planet, starship, weapons, characters)
 
         return mision
+
+    #FUNCION PARA CARGAR EL ARCHIVO TXT EN LA LISTA DE MISIONES
 
     def cargar():
 
@@ -1461,6 +1521,8 @@ class Mision:
             else:
                 break
         return lista_misiones
+
+#FUNCION A EJECUTAR PARA ABRIR MENÚ
 
 def menu_misiones():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -1551,7 +1613,7 @@ def menu_misiones():
     
     ---> """)
             
-                if salida == "salir":
+                if salida.lower() == "salir":
 
                     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -1569,13 +1631,14 @@ def menu_misiones():
         elif response == '5':
             break
         
+#FUNCIONES PARA ORDENAR UNA LISTA EN PAGINAS
+
 def mostrar_pagina(lista, pagina, elementos_por_pagina=10):
     inicio = pagina * elementos_por_pagina
     fin = inicio + elementos_por_pagina
     
     for indice,i in enumerate(range(inicio, min(fin, len(lista)))):
         print(f'{indice+1} - {lista[i]}')
-
 def paginar_lista(lista):
     elementos_por_pagina = 10
     pagina = 0
