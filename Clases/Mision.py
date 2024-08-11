@@ -65,7 +65,7 @@ class Mision:
     ---> """)
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
-            if salida == "salir":
+            if salida.lower() == "salir":
                 os.system('cls' if os.name == 'nt' else 'clear')
                 break
 
@@ -109,7 +109,7 @@ class Mision:
     ---> """)
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 break
             
@@ -172,7 +172,7 @@ class Mision:
     ---> """)
 
             #SALIDA AL MENU PRINCIPAL DE MISIONES   
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 break
 
@@ -224,8 +224,7 @@ class Mision:
 
                 for row in reader:
                     if row['id']== option_starship:
-                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
-
+                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
             print(f'''
     |----------------------------------------------------------------------------------------------|
@@ -249,7 +248,7 @@ class Mision:
     ---> """)
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 break
 
@@ -455,7 +454,7 @@ class Mision:
     ---> """)
             
             #SALIDA AL MENU PRINCIPAL DE MISIONES
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 break
 
@@ -516,8 +515,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona1)
 
                     print(f'''
@@ -533,8 +531,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona2=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona2=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona2)
 
                     print(f'''
@@ -550,8 +547,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona3=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona3=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona3)
 
                     print(f'''
@@ -567,8 +563,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona4=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona4=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona4)
 
                     print(f'''
@@ -584,8 +579,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona5=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona5=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona5)
 
                     print(f'''
@@ -601,8 +595,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona6=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona6=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona6)
 
                     print(f'''
@@ -618,8 +611,7 @@ class Mision:
 
                         for row in reader:
                             if row['id']== option_character:
-                                persona7=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
-
+                                persona7=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                     integrantes_elegidos.append(persona7)
 
                     print(f'''
@@ -721,7 +713,7 @@ class Mision:
 
     ---> """)
             
-            if respuesta == "salir":
+            if respuesta.lower() == "salir":
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -770,7 +762,7 @@ class Mision:
         
         ---> """)
                 
-                if salida == "salir":
+                if salida.lower() == "salir":
                     os.system('cls' if os.name == 'nt' else 'clear')
                     break
 
@@ -924,7 +916,7 @@ class Mision:
 
                             break
 
-                        elif new_planet =="regresar":
+                        elif new_planet.lower() =="regresar":
                             break
 
                         else:
@@ -957,9 +949,22 @@ class Mision:
 
                         pagina*=10
 
-                        option_starship=int(input("""\nEscriba el número de la nueva nave (puede escribir "regresar" para retroceder):
-        ---> """))
+                        option_starship=input("""\nEscriba el número de la nueva nave (puede escribir "regresar" para retroceder):
+        ---> """)
 
+                        #VALIDACION DE RESPUESTA
+                        if option_starship in ['1','2','3','4','5','6','7','8','9','10']:
+                            option_starship=int(option_starship)
+
+                        elif option_starship.lower() == "regresar":
+
+                            break
+
+                        else:
+                            os.system('cls' if os.name == 'nt' else 'clear')
+                            print('Ingrese un número válido...\n')
+
+                        #CONVERSION DE RESPUESTA AL ID DE NAVE
                         if option_starship > 0 and option_starship < 11:
 
                             option_starship+=pagina
@@ -973,7 +978,7 @@ class Mision:
 
                                 for row in reader:
                                     if row['id']== option_starship:
-                                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
+                                        nave=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
                             m_modificada.starship=nave
 
@@ -985,13 +990,6 @@ class Mision:
                 ''')
                             break
 
-                        elif option_starship == "regresar":
-
-                            break
-
-                        else:
-                            os.system('cls' if os.name == 'nt' else 'clear')
-                            print('Ingrese un número válido...\n')
                     
                 #MODIFICAR ARMAS A MISION
 
@@ -1058,7 +1056,7 @@ class Mision:
                 ''')
                                     break
 
-                                elif arma_eliminar=="regresar":
+                                elif arma_eliminar.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1104,7 +1102,7 @@ class Mision:
                                     if new_weapon in ['1','2','3','4','5','6','7','8','9','10']:
                                         new_weapon=int(new_weapon)
 
-                                    elif new_weapon == 'regresar':
+                                    elif new_weapon.lower() == 'regresar':
                                         break
 
                                     if new_weapon > 0 and new_weapon < 11:
@@ -1119,7 +1117,7 @@ class Mision:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print('Ingrese un número válido...\n')
 
-                                if new_weapon=="regresar":
+                                if new_weapon.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1211,7 +1209,7 @@ class Mision:
                 ''')
                                     break
 
-                                elif integrante_eliminar=="regresar":
+                                elif integrante_eliminar.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1273,7 +1271,7 @@ class Mision:
 
                                         break
 
-                                if new_character=="regresar":
+                                if new_character.lower()=="regresar":
                                     os.system('cls' if os.name == 'nt' else 'clear')
                                     break
 
@@ -1284,7 +1282,7 @@ class Mision:
 
                                     for row in reader:
                                         if row['id']== new_character:
-                                            persona=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
+                                            persona=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
 
                                 integrantes_elegidos.append(persona)
 
@@ -1363,7 +1361,7 @@ class Mision:
     
     ---> """)
             
-            if salida == "salir":
+            if salida.lower() == "salir":
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -1441,7 +1439,7 @@ class Mision:
 
                 for row in reader:
                     if row['name'] == str(starship):
-                        starship=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],'','', row['name'],'', row['starship_class'],row['pilots'])
+                        starship=Starships(row['model'],row['manufacturer'], row['cost_in_credits'], row['length'], row['crew'], row['passengers'], row['max_atmosphering_speed'], row['hyperdrive_rating'], row['MGLT'], row['cargo_capacity'], row['consumables'],row['name'],'', row['starship_class'],row['pilots'])
 
 
         #SE CONVIERTE LA LISTA DE NOMBRES DE ARMAS A LISTA DE OBJETOS ARMAS
@@ -1467,7 +1465,7 @@ class Mision:
 
                 for row in reader:
                     if row['name']== personaje:
-                        personaje1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],row['id'],'')
+                        personaje1=People(row['height'],row['weight'],row['hair_color'],row['skin_color'],row['eye_color'],row['year_born'],row['gender'],'','',row['name'],row['homeworld'],'')
                         integrantes_elegidos.append(personaje1)
 
         characters=integrantes_elegidos
@@ -1615,7 +1613,7 @@ def menu_misiones():
     
     ---> """)
             
-                if salida == "salir":
+                if salida.lower() == "salir":
 
                     os.system('cls' if os.name == 'nt' else 'clear')
 
