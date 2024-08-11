@@ -18,7 +18,7 @@ class People:
         self.vehicles = []
 
     def mostrar_personajes(self):
-        print('-----------------------------------------------')
+        print('----------------------------------------------------')
         print(f'->Nombre del Personaje : {self.name}')
         print(f'->Nombre del Planeta de Origen: {self.homeworld}')
         print('---Lista de Episodios en los que aparecen---')
@@ -50,4 +50,4 @@ class People:
             print('Este personaje no utiliza ningun vehiculo ')
             print('')
 
-        print('-----------------------------------------------')
+        print('----------------------------------------------------')

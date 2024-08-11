@@ -39,5 +39,3 @@ class A_Peliculas:
 
 
 
-
-

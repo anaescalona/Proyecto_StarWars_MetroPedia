@@ -144,7 +144,7 @@ class D_Personajes():
             response_vehicles = request_vehicles.json()
             MAX_VEHICLES = response_vehicles["total_records"]
 
-            for i in range(1, MAX_VEHICLES+1):
+            for i in range(1, MAX_VEHICLES+37): #se escribe MAX_vehicles + 3 debido a que la api dice: total records 39. Sin embargo, existe un vehiculo 42.
                 try:
                     request_vehicle = rq.get(f'https://www.swapi.tech/api/vehicles/{i}')
                     response_vehicle = request_vehicle.json()
@@ -190,7 +190,7 @@ class D_Personajes():
             response_starships = request_starships.json()
             MAX_starships = response_starships["total_records"]
 
-            for j in range(1, MAX_starships+1):
+            for j in range(1, MAX_starships+39):#se escribe MAX_starships + 3 debido a que la api dice: total records 36. Sin embargo, existe un starship nro 79.
                 try: 
                     request_starship= rq.get(f'https://www.swapi.tech/api/starships/{j}')
                     response_starship = request_starship.json()
