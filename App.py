@@ -52,7 +52,7 @@ class App:
                 continue
             elif opcion == 2:
                 os.system('cls' if os.name == 'nt' else 'clear')
-                menu_fgh()
+                menu_efg()
                 continue
             elif opcion == 3:
                 os.system('cls' if os.name == 'nt' else 'clear')
