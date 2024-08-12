@@ -7,6 +7,9 @@ from A_Peliculas import A_Peliculas
 class B_Seres_vivos:
 
     def __init__(self):
+        """Inicializa la clase B_Seres_vivos.
+           Contiene listas de especies y de personajes que se llenarán con la informacion proveniente de la SWAPI 
+        """
         self.especies_list = []
         self.people_list = []
 
