@@ -1319,7 +1319,7 @@ class Mision:
 
                                 """VALIDA RESPUESTA Y ELIMINA INTEGRANTE"""
 
-                                for persona in integrante_eliminar:
+                                for persona in integrantes_elegidos:
                                     if integrante_eliminar == persona.name:
                                         integrante_eliminar=persona
                         
@@ -1541,9 +1541,9 @@ class Mision:
         
         ¡Se ha guardado el registro de misiones exitosamente!
         
-    |--------------------------------------------------------------------------------------------------|
-      Datos guardados en {ruta_archivo}
-    |--------------------------------------------------------------------------------------------------|             
+|--------------------------------------------------------------------------------------------------|
+ Datos guardados en {ruta_archivo}
+|--------------------------------------------------------------------------------------------------|             
     ''')
             break
 
@@ -1698,7 +1698,7 @@ def menu_misiones():
             4 - Cargar misiones.
             5 - Salir.
                   
-(Si ya ha creado misiones y selecciona "Crear misiones" estará eliminando las misiones construidas
+(Si ya ha creado misiones y selecciona "Cargar misiones" estará eliminando las misiones construidas
  anteriormente.)
                   
 Nota: Al salir, las misiones registradas serán eliminadas, así que es recomendable guardar misiones
