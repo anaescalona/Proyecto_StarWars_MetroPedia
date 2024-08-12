@@ -4,9 +4,9 @@ Proyecto Final de Algoritmos y Programación
 STAR WARS METROPEDIA 
 
 Estudiantes:
-    Ana Escalona
-    Juan Piero Guarino
-    Julio Flores
+Ana Escalona, 
+Jean Piero Guarino, 
+Julio Flores, 
 
 Ejecutar el archivo App para entar al proyecto.
 
