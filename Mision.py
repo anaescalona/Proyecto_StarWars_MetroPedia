@@ -1802,7 +1802,6 @@ antes.
 
             break
         
-
 """FUNCIONES PARA ORDENAR UNA LISTA EN PAGINAS"""
 
 def mostrar_pagina(lista, pagina, elementos_por_pagina=10):
