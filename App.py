@@ -12,7 +12,8 @@ class App:
         Llama a la función `carga_api` para obtener los datos necesarios para el funcionamiento de la aplicación.
         '''
 
-        pass
+        self.peliculas, self.seres_vivos, self.personajes, self.planetas, self.lista_peliculas_saga, self.lista_seres_vivos, self.lista_personajes, self.lista_planetas, self.lista_vehiculos, self.lista_startships = carga_api()
+
 
     def menu_principal(self):
         """
@@ -47,7 +48,6 @@ class App:
                     continue
         
             if opcion == 1:
-                self.peliculas, self.seres_vivos, self.personajes, self.planetas, self.lista_peliculas_saga, self.lista_seres_vivos, self.lista_personajes, self.lista_planetas, self.lista_vehiculos, self.lista_startships = carga_api()
                 os.system('cls' if os.name == 'nt' else 'clear')
                 Match_Menu_Parte1(self.peliculas, self.seres_vivos, self.personajes, self.planetas, self.lista_peliculas_saga, self.lista_seres_vivos, self.lista_personajes, self.lista_planetas)
                 continue
