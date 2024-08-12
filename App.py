@@ -1,6 +1,6 @@
 from Mision import menu_misiones
 from funciones_menuABCD import carga_api, Match_Menu_Parte1
-from menu_EFG import menu_fgh
+from menu_EFG import menu_efg
 
 class App:
 
@@ -48,7 +48,7 @@ class App:
                 Match_Menu_Parte1(self.peliculas, self.seres_vivos, self.personajes, self.planetas, self.lista_peliculas_saga, self.lista_seres_vivos, self.lista_personajes, self.lista_planetas)
                 continue
             elif opcion == 2:
-                menu_fgh()
+                menu_efg()
                 continue
             elif opcion == 3:
                 menu_misiones()
