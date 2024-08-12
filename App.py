@@ -68,6 +68,9 @@ class App:
         |--------------------------------------------------|                 
                         ''')
                 break
+            else:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print("Entrada inválida. Por favor, ingrese un número.")
 
 
 def main():
