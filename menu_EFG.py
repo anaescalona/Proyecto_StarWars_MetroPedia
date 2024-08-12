@@ -1,9 +1,17 @@
 from Parte_E import Parte_E
 from Parte_F import Parte_F
 from Parte_G import Parte_G
-import csv
 
-def menu_fgh():
+def menu_efg():
+    """
+    Función principal que gestiona el menú interactivo para la aplicación de estadísticas Star Wars.
+
+    Dependiendo de la opción seleccionada por el usuario, se invoca el método correspondiente en las instancias 
+    de las clases Parte_E, Parte_F, o Parte_G.
+
+    El menú se mantiene en un bucle hasta que el usuario elige volver al menú principal.
+    """
+        
     parte_e = Parte_E()  
     parte_f = Parte_F()  
     parte_g = Parte_G()  
@@ -39,7 +47,4 @@ def menu_fgh():
             break
         else:
             print("Opción no válida. Por favor, intente nuevamente.")
-
-if __name__ == "__main__":
-    menu_fgh()
 
