@@ -90,7 +90,7 @@ def Match_Menu_Parte1(peliculas, seres_vivos, personajes, planetas, lista_pelicu
         print('\t2.- Lista de las especies de seres vivos de la saga')
         print('\t3.- Lista de planetas')
         print('\t4.- Buscar personaje')
-        print('\t5.- Salir del programa')
+        print('\t5.- Volver al Menú principal')
         print('')
         opcion = input('Ingrese el número de las opciones mencionadas: ')
         if(opcion == '1'):
@@ -103,7 +103,7 @@ def Match_Menu_Parte1(peliculas, seres_vivos, personajes, planetas, lista_pelicu
             busqueda = input("Ingrese el nombre del personaje que desees buscar: ")
             personajes.getCharactersByName(busqueda)
         elif(opcion == '5'):
-            print('Volver al menu principal...')
+            print('Volviendo al Menú principal...')
             break
         else:
             print('Opcion Invalida')
