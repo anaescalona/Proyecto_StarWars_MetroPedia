@@ -5,6 +5,9 @@ from A_Peliculas import A_Peliculas
 import requests as rq 
 class C_Planetas:
     def __init__(self):
+        """Inicializa la clase C_Planetas.
+           Contiene una listas de planetas  que se llenarán con la informacion proveniente de la SWAPI.
+        """
         self.planets_list = []
 
     def getPlanetas(self):

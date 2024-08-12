@@ -6,6 +6,10 @@ from Clases.People import People
 class D_Personajes():
 
     def __init__(self):
+        """Inicializa la clase D_Personajes.
+           Contiene listas de personajes, vehiculos, starships que se llenará con la informacion de la SWAPI. 
+           En el caso de self.resultados_list, esta lista se almacenará con los resultados arrojados por el metodo getCharactersByName(name)
+        """
         self.lista_personajes = []
         self.resultados_list = []
         self.lista_vehiculos = []

@@ -4,6 +4,9 @@ from Clases.Films import Films
 class A_Peliculas:
 
     def __init__(self):
+        """Inicializa la clase A_Peliculas, contiene una lista que se llenará con la información de las peliculas de las sagas de starwars (provenientes de SWAPI)
+        a manera de objeto
+        """
       
         self.lista_peliculas_saga = []
 

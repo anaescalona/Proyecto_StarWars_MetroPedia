@@ -1,5 +1,27 @@
 class People: 
     def __init__(self, height,mass,hair_color,skin_color,eye_color,birth_year,gender,created,edited,name,homeworld,url):
+        """Inicializa la clase People. Es el constructor de la clase. Es importante destacar que dentro de este metodo se encuentran añadidos 
+        self.episode_id = []
+        self.especie = ''
+        self.starships = []
+        self.vehicles = []
+
+        Siendo estos utilizados en los apartados relacionados a la API
+
+        Args:
+            height (str): atributo de la clase People
+            mass (str): atributo de la clase People
+            hair_color (str): atributo de la clase People
+            skin_color (str): atributo de la clase People
+            eye_color (str): atributo de la clase People
+            birth_year (str): atributo de la clase People
+            gender (str): atributo de la clase People
+            created (str): atributo de la clase People
+            edited (str): atributo de la clase People
+            name (str): atributo de la clase People
+            homeworld (str): atributo de la clase People
+            url (str): atributo de la clase People
+        """
         self.height = height
         self.mass = mass
         self.hair_color = hair_color
@@ -18,6 +40,8 @@ class People:
         self.vehicles = []
 
     def mostrar_personajes(self):
+        """Permite imprimir la informacion en el formato deseado.
+        """
         print('----------------------------------------------------')
         print(f'->Nombre del Personaje : {self.name}')
         print(f'->Nombre del Planeta de Origen: {self.homeworld}')
