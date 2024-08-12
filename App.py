@@ -1,3 +1,4 @@
+import os
 from Mision import menu_misiones
 from funciones_menuABCD import carga_api, Match_Menu_Parte1
 from menu_EFG import menu_fgh
@@ -41,19 +42,24 @@ class App:
             try:
                 opcion = int(input("Ingrese el número de la opción: "))
             except ValueError:
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     print("Entrada inválida. Por favor, ingrese un número.")
                     continue
         
             if opcion == 1:
+                os.system('cls' if os.name == 'nt' else 'clear')
                 Match_Menu_Parte1(self.peliculas, self.seres_vivos, self.personajes, self.planetas, self.lista_peliculas_saga, self.lista_seres_vivos, self.lista_personajes, self.lista_planetas)
                 continue
             elif opcion == 2:
+                os.system('cls' if os.name == 'nt' else 'clear')
                 menu_fgh()
                 continue
             elif opcion == 3:
+                os.system('cls' if os.name == 'nt' else 'clear')
                 menu_misiones()
                 continue
             elif opcion == 4:
+                os.system('cls' if os.name == 'nt' else 'clear')
                 print('''
         |--------------------------------------------------|                      
                            ADIOS 
